@@ -22,7 +22,7 @@ namespace RealisticDataGenerationWithBogus
 
             var orderFaker = new Faker<Order>()
                 .RuleFor(x => x.Id, Guid.NewGuid)
-                .RuleFor(x => x.Currency, x => "руб")
+                .RuleFor(x => x.Currency, x => RegionInfo.CurrentRegion.ISOCurrencySymbol)
                 .RuleFor(x => x.Price, x => x.Finance.Amount(100, 10000))
                 .RuleFor(x => x.BillingDetails, x => billingDetailsFaker);
 
